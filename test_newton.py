@@ -1,6 +1,5 @@
 import unittest
 import newton
-import math
 
 class NewtonTestCase(unittest.TestCase):
     def test_zero_degree_polynomial(self):
