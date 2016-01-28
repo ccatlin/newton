@@ -1,5 +1,5 @@
 # newton
-This is a little module to create [Newton (interpolation) polynomials](https://en.wikipedia.org/wiki/Newton_polynomial) from a set of supplied funcation points (e.g. (-2,4), (-1,1), (0,0), (1,1), (2,4)). It is useful for calculating intermediate values in unknown or computationally expensive functions.
+This is a little module to create [Newton (interpolation) polynomials](https://en.wikipedia.org/wiki/Newton_polynomial) from a set of supplied funcation points (e.g. (-2,4), (-1,1), (0,0), (1,1), (2,4)). It is useful for approximating intermediate values for unknown or computationally expensive functions. No external libraries libraries (e.g. Numpy) are necessary.
 
 There is no guarantee of correctness. Please use at your own risk.
 
@@ -21,14 +21,14 @@ p(0.75)   # 0.694140625 (vs 0.64)
 ```
 Divided differences for:
 ```
-# (xi, yi) | div diff
-# (1,  0)  |
-#          |  2
-# (2,  2)  |     1
-#          |  5     0
-# (4,  12) |     1
-#          |  8
-# (5,  20) |
+# (x, y)  | divided difference
+# (1, 0)  | (1) → 0
+#         |          (1,2) → (2-0)/(2-1) = 2
+# (2, 2)  | (2) → 2                            (1,2,4) → (5-2)/(4-1) = 1
+#         |          (2,4) → (12-2)/(4-2) = 5                            (1,2,4,5) → (1-1)/(5-1) = 0
+# (4, 12) | (4) → 12                           (2,4,5) → (8-5)/(5-2) = 1
+#         |          (4,5) → (20-12)/(5-4) = 8
+# (5, 20) | (5) → 20
 
 g = newton.div_diff_function([(1,0), (2,2), (4,12), (5,20)])
 g[(4,)]      # 12
