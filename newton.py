@@ -1,7 +1,6 @@
 """
-This is a little module to create Newton polynomials, interpolation polynomials 
-in the Newton basis, from a set of supplied funcational points. For more info,
-please see:
+This is a little module to create Newton (interpolation) polynomials
+from a set of supplied funcational points. For more info, please see:
 http://wikipedia.org/wiki/Newton_polynomial 
 http://wikipedia.org/wiki/Divided_differences
 Note: Use at your own risk.
@@ -43,7 +42,7 @@ def interpolation_polynomial(known_points, get_string=False):
     n = len(x_knots) - 1
     div_diffs = div_diff_function(known_points)
     
-    # coefficients - f(x0), f(x0,x1), ..., f(x0,x1,...,xn+1):
+    # coefficients - f(x0), f(x0,x1), ..., f(x0,x1,...,xn):
     coeffs = [div_diffs(x_knots[:i+1]) for i in range(len(x_knots))]
     
     # polynomial:
